@@ -57,7 +57,7 @@ end
 get "/" do
   # Get base API Connection
   @graph  = Koala::Facebook::API.new(session[:access_token])
-
+  @graph.put_connections("me", "feed", :message => "I am writing on my wall")
   # Get public details of current application
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
