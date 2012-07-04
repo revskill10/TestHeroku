@@ -90,9 +90,15 @@
           document.createElement(tags.pop());
       </script>
     <![endif]-->
+    <style type="text/css" media="screen">
+    #canvas {
+      border: 1px solid #c0c0c0;
+    }
+    }
+    </style>
   </head>
   <body>
-   
+
     <div id="fb-root"></div>
     <script type="text/javascript">
       window.fbAsyncInit = function() {
@@ -170,71 +176,18 @@
     </header>
 
     <section id="get-started">
-      <p>Welcome to HPU Test Center!</p>
-      <a href="https://devcenter.heroku.com/articles/facebook?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top" class="button">Learn How to Edit This App</a>
+      <p>Welcome to HPU Test Center!</p>  
     </section>
 
+    <canvas id="canvas" width="270" height="270"></canvas>
 
-    <% if @user %>
-    <section id="samples" class="clearfix">
-          <h1>Examples of the Facebook Graph API</h1>
-
-          <div class="list">
-            <h3>A few of your friends</h3>
-            <ul class="friends">
-              <% @friends.each do |friend| %>
-                <li>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= friend['id']%>')">
-                    <img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>">
-                    <%= friend['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-
-          <div class="list inline">
-            <h3>Recent photos</h3>
-            <ul class="photos">
-              <% @photos.each_with_index do |photo, index| %>
-                <li style="background-image: url(<%= photo['picture'] %>)" class='<%= 'first-column' if (index%4).zero? %>'>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= photo['id'] %>')">
-                    <%= photo['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-
-          <div class="list">
-            <h3>Things you like</h3>
-            <ul class="things">
-              <% @likes.each do |like| %>
-                <li>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= like['id'] %>')">
-                    <img src="https://graph.facebook.com/<%= like['id'] %>/picture?type=square" alt="<%= like['name'] %>">
-                    <%= like['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-
-          <div class="list">
-            <h3>Friends using this app</h3>
-            <ul class="friends">
-              <% @friends_using_app.each do |friend_result| %>
-                <li>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= friend_result['uid'] %>')">
-                    <img src="<%= friend_result['pic_square'] %>" alt="<%= friend_result['name'] %>">
-                    <%= friend_result['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </section>
-    <% end %>
+    <script type="text/javascript" charset="utf-8">
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+      context.fillStyle = "gray";
+      context.fillRect(30, 30, 200, 200);
+    </script>
+  
 
 
     
