@@ -176,7 +176,12 @@
 
     <canvas id="canvas" width="270" height="270"></canvas>
 
-   
+    <script type="text/javascript" charset="utf-8">
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+      context.fillStyle = "gray";
+      context.fillRect(30, 30, 200, 200);
+    </script>
   
 
 
